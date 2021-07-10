@@ -1,14 +1,15 @@
 body {
-    
    
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);  
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
     background-size: cover;
 }  
-
 .register{
     
     margin-top: 3%;
     padding: 3%;
+}
+.navbar li a:hover{
+    border-bottom: 1px solid white !important;
 }
 .register-left{
     text-align: center;
@@ -28,9 +29,11 @@ body {
     cursor: pointer;
 }
 .register-right{
-    background: #c8cacc;
+    background: #d5d5d6;
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
+    border: 2px solid white;
+    
 }
 .register-left img{
     margin-top: 15%;

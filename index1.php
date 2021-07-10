@@ -23,7 +23,7 @@ include("header.php");
     #inputbtn:hover{cursor:pointer;}
     .card{
     background: #f8f9fa;
-    border-top-left-radius: 5% 5%;
+     border-top-left-radius: 5% 5%; 
     border-bottom-left-radius: 5% 5%;
     border-top-right-radius: 5% 5%;
     border-bottom-right-radius: 5% 5%;
@@ -34,7 +34,7 @@ include("header.php");
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" >
     <div class="container">
 
-      <a class="navbar-brand js-scroll-trigger" href="index.php" style="margin-top: 10px;margin-left:-65px;font-family: 'IBM Plex Sans', sans-serif;"><h4><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp GLOBAL HOSPITALS</h4></a>
+      <a class="navbar-brand js-scroll-trigger" href="index.php" style="margin-top: 10px;margin-left:-65px;font-family: 'IBM Plex Sans', sans-serif;"><h4><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp  WELL RIGHT</h4></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

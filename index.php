@@ -2,7 +2,7 @@
 <head>
 	<title>Hospital_Mangement_System</title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
-<link rel="stylesheet" type="text/css" href="style1.css">
+ <link rel="stylesheet" type="text/css" href="css/style3.css"> 
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
 
@@ -51,7 +51,7 @@ function checklen()
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" >
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#" style="margin-top: 10px;margin-left:-65px;font-family: 'IBM Plex Sans', sans-serif;"><h4><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp WELL RIGH</h4></a>
+      <a class="navbar-brand js-scroll-trigger" href="#" style="margin-top: 10px;margin-left:-65px;font-family: 'IBM Plex Sans', sans-serif;"><h4><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp WELL RIGHT</h4></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -70,22 +70,25 @@ function checklen()
           </li>
         </ul>
       </div>
+   
+      
     </div>
-  </nav>
+    </nav>
 
-  
 
 
 <div class="container register" style="font-family: 'IBM Plex Sans', sans-serif;">
 
-
                 <div class="row" >
-                    <div class="col-md-3 " style="margin-top: 10%;right: 5%">
+                
+                    <div class="col-md-3 " style="margin-top: 10%;right: 2%">
                        <!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/> -->
                         <img  src="images/logo.png" class="h6" alt="" />
                         <h1 style="height: 100px;color:#F0F8FF" class="text-center">Welcome</h1>
                     </div>
-                    <div class="col-md-9 register-right" style="margin-top: 40px;left: 80px;">
+
+
+                    <div class="col-md-9 register-right" style="margin-top: 40px;left: 100px;">
                         <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist" style="width: 40%;">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Patient</a>
