@@ -204,15 +204,20 @@ function get_specs(){
   </style>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-     <ul class="navbar-nav mr-auto">
-       <li class="nav-item">
-        <a class="nav-link" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+   
+  </div>
+  <nav class="navbar">
+  <div class="container-fluid">
+  <ul class="navbar-nav">
+       <li class="nav-item left">
+        <a class="nav-link me-2" style="aligen-right:50px;right: 2%" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#"></a>
       </li>
-    </ul>
+    
   </div>
+</nav>
 </nav>
   </head>
   <style type="text/css">
