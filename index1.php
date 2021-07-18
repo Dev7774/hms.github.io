@@ -69,7 +69,7 @@ include("header.php");
           <img src="images/ambulance1.png" alt="" style="width: 20%;padding-left: 40px;margin-top: 150px;margin-left: 45px;margin-bottom:15px">
       </div>
 
-      <div style="color: white;">
+      <div style="color:white;">
             <h4 style="font-family: 'IBM Plex Sans', sans-serif;"> We are here for you!</h4>
           </div>
 
