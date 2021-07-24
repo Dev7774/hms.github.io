@@ -234,7 +234,10 @@ function get_specs(){
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" id="list-dash-list" data-toggle="list" href="#list-dash" role="tab" aria-controls="home">Dashboard</a>
       <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Book Appointment</a>
+      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Prescriptions</a>
+      <a class="list-group-item list-group-item-action" href="#app-hist" id="list-pat-list" role="tab" data-toggle="list" aria-controls="home">Appointment History</a>
    
+
     </div><br>
   </div>
   <div class="col-md-8" style="margin-top: 3%;">
@@ -262,6 +265,37 @@ function get_specs(){
                     </div>
                   </div>
                 </div>
+                <div class="col-sm-4" style="left: 10%">
+                  <div class="panel panel-white no-radius text-center">
+                    <div class="panel-body" >
+                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
+                      <h4 class="StepTitle" style="margin-top: 5%;">My Appointments</h2>
+                    
+                      <p class="cl-effect-1">
+                        <a href="#app-hist" onclick="clickDiv('#list-pat-list')">
+                          View Appointment History
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                
+    <div class="col-sm-4" style="left: 20%;margin-top:5%">
+                  <div class="panel panel-white no-radius text-center">
+                    <div class="panel-body" >
+                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list-ul fa-stack-1x fa-inverse"></i> </span>
+                      <h4 class="StepTitle" style="margin-top: 5%;">Prescriptions</h2>
+                    
+                      <p class="cl-effect-1">
+                        <a href="#list-pres" onclick="clickDiv('#list-pres-list')">
+                          View Prescription List
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
 
                 
           
