@@ -3,14 +3,7 @@
 include('func1.php');
 $con=mysqli_connect("localhost","root","","myhmsdb");
 $doctor = $_SESSION['dname'];
-if(isset($_GET['cancel']))
-  {
-    $query=mysqli_query($con,"update appointmenttb set doctorStatus='0' where ID = '".$_GET['ID']."'");
-    if($query)
-    {
-      echo "<script>alert('Your appointment successfully cancelled');</script>";
-    }
-  }
+
 
   // if(isset($_GET['prescribe'])){
     
@@ -107,7 +100,7 @@ if(isset($_GET['cancel']))
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" href="#list-dash" role="tab" aria-controls="home" data-toggle="list">Dashboard</a>
       <a class="list-group-item list-group-item-action" href="#list-app" id="list-app-list" role="tab" data-toggle="list" aria-controls="home">Appointments</a>
-      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home"> Prescription List</a>
+      
       
     </div><br>
   </div>
@@ -137,20 +130,7 @@ if(isset($_GET['cancel']))
                   </div>
                 </div>
 
-                <div class="col-sm-4" style="left: 15%">
-                  <div class="panel panel-white no-radius text-center">
-                    <div class="panel-body">
-                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list-ul fa-stack-1x fa-inverse"></i> </span>
-                      <h4 class="StepTitle" style="margin-top: 5%;"> Prescriptions</h4>
-                        
-                      <p class="links cl-effect-1">
-                        <a href="#list-pres" onclick="clickDiv('#list-pres-list')">
-                          Prescription List
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>    
+                 
 
              </div>
            </div>
@@ -213,32 +193,19 @@ if(isset($_GET['cancel']))
                         ?></td>
 
                      <td>
-                        <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
-                        { ?>
+                        
 
 													
-	                        <a href="doctor-panel.php?ID=<?php echo $row['ID']?>&cancel=update" 
-                              onClick="return confirm('Are you sure you want to cancel this appointment ?')"
-                              title="Cancel Appointment" tooltip-placement="top" tooltip="Remove"><button class="btn btn-danger">Cancel</button></a>
-	                        <?php } else {
-
-                                echo "Cancelled";
-                                } ?>
+	                        <button class="btn btn-danger">Cancel</button>
+	                       
                         
                         </td>
 
                         <td>
 
-                        <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
-                        { ?>
+                        
 
-                        <a href="prescribe.php?pid=<?php echo $row['pid']?>&ID=<?php echo $row['ID']?>&fname=<?php echo $row['fname']?>&lname=<?php echo $row['lname']?>&appdate=<?php echo $row['appdate']?>&apptime=<?php echo $row['apptime']?>"
-                        tooltip-placement="top" tooltip="Remove" title="prescribe">
                         <button class="btn btn-success">Prescibe</button></a>
-                        <?php } else {
-
-                            echo "-";
-                            } ?>
                         
                         </td>
 

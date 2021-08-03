@@ -36,7 +36,7 @@ if(isset($_POST['app-submit']))
   $cur_time = date("H:i:s");
   $apptime1 = strtotime($apptime);
   $appdate1 = strtotime($appdate);
-	
+  
   if(date("Y-m-d",$appdate1)>=$cur_date){
     if((date("Y-m-d",$appdate1)==$cur_date and date("H:i:s",$apptime1)>$cur_time) or date("Y-m-d",$appdate1)>$cur_date) {
       $check_query = mysqli_query($con,"select apptime from appointmenttb where doctor='$doctor' and appdate='$appdate' and apptime='$apptime'");
@@ -66,78 +66,14 @@ if(isset($_POST['app-submit']))
   
 }
 
-if(isset($_GET['cancel']))
-  {
-    $query=mysqli_query($con,"update appointmenttb set userStatus='0' where ID = '".$_GET['ID']."'");
-    if($query)
-    {
-      echo "<script>alert('Your appointment successfully cancelled');</script>";
-    }
-  }
 
 
 
 
 
-function generate_bill(){
-  $con=mysqli_connect("localhost","root","","myhmsdb");
-  $pid = $_SESSION['pid'];
-  $output='';
-  $query=mysqli_query($con,"select p.pid,p.ID,p.fname,p.lname,p.doctor,p.appdate,p.apptime,p.disease,p.allergy,p.prescription,a.docFees from prestb p inner join appointmenttb a on p.ID=a.ID and p.pid = '$pid' and p.ID = '".$_GET['ID']."'");
-  while($row = mysqli_fetch_array($query)){
-    $output .= '
-    <label> Patient ID : </label>'.$row["pid"].'<br/><br/>
-    <label> Appointment ID : </label>'.$row["ID"].'<br/><br/>
-    <label> Patient Name : </label>'.$row["fname"].' '.$row["lname"].'<br/><br/>
-    <label> Doctor Name : </label>'.$row["doctor"].'<br/><br/>
-    <label> Appointment Date : </label>'.$row["appdate"].'<br/><br/>
-    <label> Appointment Time : </label>'.$row["apptime"].'<br/><br/>
-    <label> Disease : </label>'.$row["disease"].'<br/><br/>
-    <label> Allergies : </label>'.$row["allergy"].'<br/><br/>
-    <label> Prescription : </label>'.$row["prescription"].'<br/><br/>
-    <label> Fees Paid : </label>'.$row["docFees"].'<br/>
-    
-    ';
-
-  }
-  
-  return $output;
-}
 
 
-if(isset($_GET["generate_bill"])){
-  require_once("TCPDF/tcpdf.php");
-  $obj_pdf = new TCPDF('P',PDF_UNIT,PDF_PAGE_FORMAT,true,'UTF-8',false);
-  $obj_pdf -> SetCreator(PDF_CREATOR);
-  $obj_pdf -> SetTitle("Generate Bill");
-  $obj_pdf -> SetHeaderData('','',PDF_HEADER_TITLE,PDF_HEADER_STRING);
-  $obj_pdf -> SetHeaderFont(Array(PDF_FONT_NAME_MAIN,'',PDF_FONT_SIZE_MAIN));
-  $obj_pdf -> SetFooterFont(Array(PDF_FONT_NAME_MAIN,'',PDF_FONT_SIZE_MAIN));
-  $obj_pdf -> SetDefaultMonospacedFont('helvetica');
-  $obj_pdf -> SetFooterMargin(PDF_MARGIN_FOOTER);
-  $obj_pdf -> SetMargins(PDF_MARGIN_LEFT,'5',PDF_MARGIN_RIGHT);
-  $obj_pdf -> SetPrintHeader(false);
-  $obj_pdf -> SetPrintFooter(false);
-  $obj_pdf -> SetAutoPageBreak(TRUE, 10);
-  $obj_pdf -> SetFont('helvetica','',12);
-  $obj_pdf -> AddPage();
 
-  $content = '';
-
-  $content .= '
-      <br/>
-      <h2 align ="center"> Global Hospitals</h2></br>
-      <h3 align ="center"> Bill</h3>
-      
-
-  ';
- 
-  $content .= generate_bill();
-  $obj_pdf -> writeHTML($content);
-  ob_end_clean();
-  $obj_pdf -> Output("bill.pdf",'I');
-
-}
 
 function get_specs(){
   $con=mysqli_connect("localhost","root","","myhmsdb");
@@ -234,8 +170,7 @@ function get_specs(){
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" id="list-dash-list" data-toggle="list" href="#list-dash" role="tab" aria-controls="home">Dashboard</a>
       <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Book Appointment</a>
-      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Prescriptions</a>
-      <a class="list-group-item list-group-item-action" href="#app-hist" id="list-pat-list" role="tab" data-toggle="list" aria-controls="home">Appointment History</a>
+     
    
 
     </div><br>
@@ -265,36 +200,9 @@ function get_specs(){
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-4" style="left: 10%">
-                  <div class="panel panel-white no-radius text-center">
-                    <div class="panel-body" >
-                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
-                      <h4 class="StepTitle" style="margin-top: 5%;">My Appointments</h2>
-                    
-                      <p class="cl-effect-1">
-                        <a href="#app-hist" onclick="clickDiv('#list-pat-list')">
-                          View Appointment History
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
                 </div>
                 
-    <div class="col-sm-4" style="left: 20%;margin-top:5%">
-                  <div class="panel panel-white no-radius text-center">
-                    <div class="panel-body" >
-                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list-ul fa-stack-1x fa-inverse"></i> </span>
-                      <h4 class="StepTitle" style="margin-top: 5%;">Prescriptions</h2>
-                    
-                      <p class="cl-effect-1">
-                        <a href="#list-pres" onclick="clickDiv('#list-pres-list')">
-                          View Prescription List
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+    
                 
 
                 
@@ -457,156 +365,18 @@ function get_specs(){
         </div><br>
       </div>
       
-<div class="tab-pane fade" id="app-hist" role="tabpanel" aria-labelledby="list-pat-list">
-        
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    
-                    <th scope="col">Doctor Name</th>
-                    <th scope="col">Consultancy Fees</th>
-                    <th scope="col">Appointment Date</th>
-                    <th scope="col">Appointment Time</th>
-                    <th scope="col">Current Status</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
-
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
-                    global $con;
-
-                    $query = "select ID,doctor,docFees,appdate,apptime,userStatus,doctorStatus from appointmenttb where fname ='$fname' and lname='$lname';";
-                    $result = mysqli_query($con,$query);
-                    while ($row = mysqli_fetch_array($result)){
-              
-                      #$fname = $row['fname'];
-                      #$lname = $row['lname'];
-                      #$email = $row['email'];
-                      #$contact = $row['contact'];
-                  ?>
-                      <tr>
-                        <td><?php echo $row['doctor'];?></td>
-                        <td><?php echo $row['docFees'];?></td>
-                        <td><?php echo $row['appdate'];?></td>
-                        <td><?php echo $row['apptime'];?></td>
-                        
-                          <td>
-                    <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
-                    {
-                      echo "Active";
-                    }
-                    if(($row['userStatus']==0) && ($row['doctorStatus']==1))  
-                    {
-                      echo "Cancelled by You";
-                    }
-
-                    if(($row['userStatus']==1) && ($row['doctorStatus']==0))  
-                    {
-                      echo "Cancelled by Doctor";
-                    }
-                        ?></td>
-
-                        <td>
-                        <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
-                        { ?>
-
-													
-	                        <a href="admin-panel.php?ID=<?php echo $row['ID']?>&cancel=update" 
-                              onClick="return confirm('Are you sure you want to cancel this appointment ?')"
-                              title="Cancel Appointment" tooltip-placement="top" tooltip="Remove"><button class="btn btn-danger">Cancel</button></a>
-	                        <?php } else {
-
-                                echo "Cancelled";
-                                } ?>
-                        
-                        </td>
-                      </tr>
-                    <?php } ?>
-                </tbody>
-              </table>
-        <br>
-      </div>
-
-
-
-      <div class="tab-pane fade" id="list-pres" role="tabpanel" aria-labelledby="list-pres-list">
-        
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    
-                    <th scope="col">Doctor Name</th>
-                    <th scope="col">Appointment ID</th>
-                    <th scope="col">Appointment Date</th>
-                    <th scope="col">Appointment Time</th>
-                    <th scope="col">Diseases</th>
-                    <th scope="col">Allergies</th>
-                    <th scope="col">Prescriptions</th>
-                    <th scope="col">Bill Payment</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
-
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
-                    global $con;
-
-                    $query = "select doctor,ID,appdate,apptime,disease,allergy,prescription from prestb where pid='$pid';";
-                    
-                    $result = mysqli_query($con,$query);
-                    if(!$result){
-                      echo mysqli_error($con);
-                    }
-                    
-
-                    while ($row = mysqli_fetch_array($result)){
-                  ?>
-                      <tr>
-                        <td><?php echo $row['doctor'];?></td>
-                        <td><?php echo $row['ID'];?></td>
-                        <td><?php echo $row['appdate'];?></td>
-                        <td><?php echo $row['apptime'];?></td>
-                        <td><?php echo $row['disease'];?></td>
-                        <td><?php echo $row['allergy'];?></td>
-                        <td><?php echo $row['prescription'];?></td>
-                        <td>
-                          <form method="get">
-                          <!-- <a href="admin-panel.php?ID=" 
-                              onClick=""
-                              title="Pay Bill" tooltip-placement="top" tooltip="Remove"><button class="btn btn-success">Pay</button>
-                              </a></td> -->
-
-                              <a href="admin-panel.php?ID=<?php echo $row['ID']?>">
-                              <input type ="hidden" name="ID" value="<?php echo $row['ID']?>"/>
-                              <input type = "submit" onclick="alert('Bill Paid Successfully');" name ="generate_bill" class = "btn btn-success" value="Pay Bill"/>
-                              </a>
-                              </td>
-                              </form>
-
-                    
-                      </tr>
-                    <?php }
-                    ?>
-                </tbody>
-              </table>
-        <br>
-      </div>
 
 
 
 
-      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-        <form class="form-group" method="post" action="func.php">
-          <label>Doctors name: </label>
-          <input type="text" name="name" placeholder="Enter doctors name" class="form-control">
-          <br>
-          <input type="submit" name="doc_sub" value="Add Doctor" class="btn btn-primary">
-        </form>
-      </div>
-       <div class="tab-pane fade" id="list-attend" role="tabpanel" aria-labelledby="list-attend-list">...</div>
+     
+
+
+
+
+      
+      
+       
     </div>
   </div>
 </div>

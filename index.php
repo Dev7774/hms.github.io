@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Hospital_Mangement_System</title>
+	<title>Hospital Mangement System</title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
  <link rel="stylesheet" type="text/css" href="css/style3.css"> 
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
