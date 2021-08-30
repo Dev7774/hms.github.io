@@ -139,9 +139,6 @@ if(isset($_POST['docsub1']))
       <a class="list-group-item list-group-item-action" href="#list-doc" id="list-doc-list"  role="tab"    aria-controls="home" data-toggle="list">Doctor List</a>
       <a class="list-group-item list-group-item-action" href="#list-pat" id="list-pat-list"  role="tab" data-toggle="list" aria-controls="home">Patient List</a>
       <a class="list-group-item list-group-item-action" href="#list-app" id="list-app-list"  role="tab" data-toggle="list" aria-controls="home">Appointment Details</a>
-      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list"  role="tab" data-toggle="list" aria-controls="home">Prescription List</a>
-      <a class="list-group-item list-group-item-action" href="#list-settings" id="list-adoc-list"  role="tab" data-toggle="list" aria-controls="home">Add Doctor</a>
-      <a class="list-group-item list-group-item-action" href="#list-settings1" id="list-ddoc-list"  role="tab" data-toggle="list" aria-controls="home">Delete Doctor</a>
       <a class="list-group-item list-group-item-action" href="#list-mes" id="list-mes-list"  role="tab" data-toggle="list" aria-controls="home">Queries</a>
       
     </div><br>
@@ -203,46 +200,7 @@ if(isset($_POST['docsub1']))
                     </div>
                   </div>
                 </div>
-                </div>
-
-                <div class="row">
-                <div class="col-sm-4" style="left: 13%;margin-top: 5%;">
-                  <div class="panel panel-white no-radius text-center">
-                    <div class="panel-body" >
-                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list-ul fa-stack-1x fa-inverse"></i> </span>
-                      <h4 class="StepTitle" style="margin-top: 5%;">Prescription List</h4>
-                    
-                      <p class="cl-effect-1">
-                        <a href="#list-pres" onclick="clickDiv('#list-pres-list')">
-                          View Prescriptions
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-sm-4" style="left: 18%;margin-top: 5%">
-                  <div class="panel panel-white no-radius text-center">
-                    <div class="panel-body" >
-                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-plus fa-stack-1x fa-inverse"></i> </span>
-                      <h4 class="StepTitle" style="margin-top: 5%;">Manage Doctors</h4>
-                    
-                      <p class="cl-effect-1">
-                        <a href="#app-hist" onclick="clickDiv('#list-adoc-list')">Add Doctors</a>
-                        &nbsp|
-                        <a href="#app-hist" onclick="clickDiv('#list-ddoc-list')">
-                          Delete Doctors
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                </div>
-                        
-
-      
-                
+                </div>                
               </div>
             </div>
       
