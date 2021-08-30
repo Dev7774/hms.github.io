@@ -44,7 +44,7 @@ $doctor = $_SESSION['dname'];
     
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Global Hospital </a>
+  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> WELL RIGHT </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -81,6 +81,14 @@ $doctor = $_SESSION['dname'];
         <a class="nav-link" href="#"></a>
       </li>
     </ul>
+<<<<<<< HEAD
+=======
+   <form class="form-inline my-2 my-lg-0" method="post" action="search.php">
+       <input class="form-control mr-sm-2" type="text" placeholder="Enter contact number" aria-label="Search" name="contact">
+       <input type="submit" class="btn btn-outline-light" id="inputbtn" name="search_submit" value="Search">
+     </form>
+
+>>>>>>> 386d27fe436b5a492d82d7b9261cd2e68bcaabb2
   </div>
 </nav>
   </head>
