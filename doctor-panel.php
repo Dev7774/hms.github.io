@@ -81,14 +81,12 @@ $doctor = $_SESSION['dname'];
         <a class="nav-link" href="#"></a>
       </li>
     </ul>
-<<<<<<< HEAD
-=======
-   <form class="form-inline my-2 my-lg-0" method="post" action="search.php">
+
+   <form class="form-inline my-2 my-lg-0" method="post" action="">
        <input class="form-control mr-sm-2" type="text" placeholder="Enter contact number" aria-label="Search" name="contact">
        <input type="submit" class="btn btn-outline-light" id="inputbtn" name="search_submit" value="Search">
      </form>
 
->>>>>>> 386d27fe436b5a492d82d7b9261cd2e68bcaabb2
   </div>
 </nav>
   </head>
