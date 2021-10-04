@@ -3,7 +3,14 @@
 include('func1.php');
 $con=mysqli_connect("localhost","root","","myhmsdb");
 $doctor = $_SESSION['dname'];
-
+if(isset($_GET['cancel']))
+  {
+    $query=mysqli_query($con,"update appointmenttb set doctorStatus='0' where ID = '".$_GET['ID']."'");
+    if($query)
+    {
+      echo "<script>alert('Your appointment successfully cancelled');</script>";
+    }
+  }
 
   // if(isset($_GET['prescribe'])){
     
@@ -44,7 +51,7 @@ $doctor = $_SESSION['dname'];
     
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> WELL RIGHT </a>
+  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Global Hospital </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -81,6 +88,10 @@ $doctor = $_SESSION['dname'];
         <a class="nav-link" href="#"></a>
       </li>
     </ul>
+    <form class="form-inline my-2 my-lg-0" method="post" action="search.php">
+      <input class="form-control mr-sm-2" type="text" placeholder="Enter contact number" aria-label="Search" name="contact">
+      <input type="submit" class="btn btn-outline-light" id="inputbtn" name="search_submit" value="Search">
+    </form>
   </div>
 </nav>
   </head>
@@ -96,7 +107,7 @@ $doctor = $_SESSION['dname'];
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" href="#list-dash" role="tab" aria-controls="home" data-toggle="list">Dashboard</a>
       <a class="list-group-item list-group-item-action" href="#list-app" id="list-app-list" role="tab" data-toggle="list" aria-controls="home">Appointments</a>
-      
+      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home"> Prescription List</a>
       
     </div><br>
   </div>
@@ -126,7 +137,20 @@ $doctor = $_SESSION['dname'];
                   </div>
                 </div>
 
-                 
+                <div class="col-sm-4" style="left: 15%">
+                  <div class="panel panel-white no-radius text-center">
+                    <div class="panel-body">
+                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list-ul fa-stack-1x fa-inverse"></i> </span>
+                      <h4 class="StepTitle" style="margin-top: 5%;"> Prescriptions</h4>
+                        
+                      <p class="links cl-effect-1">
+                        <a href="#list-pres" onclick="clickDiv('#list-pres-list')">
+                          Prescription List
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>    
 
              </div>
            </div>
@@ -189,19 +213,32 @@ $doctor = $_SESSION['dname'];
                         ?></td>
 
                      <td>
-                        
+                        <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
+                        { ?>
 
 													
-	                        <button class="btn btn-danger">Cancel</button>
-	                       
+	                        <a href="doctor-panel.php?ID=<?php echo $row['ID']?>&cancel=update" 
+                              onClick="return confirm('Are you sure you want to cancel this appointment ?')"
+                              title="Cancel Appointment" tooltip-placement="top" tooltip="Remove"><button class="btn btn-danger">Cancel</button></a>
+	                        <?php } else {
+
+                                echo "Cancelled";
+                                } ?>
                         
                         </td>
 
                         <td>
 
-                        
+                        <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
+                        { ?>
 
+                        <a href="prescribe.php?pid=<?php echo $row['pid']?>&ID=<?php echo $row['ID']?>&fname=<?php echo $row['fname']?>&lname=<?php echo $row['lname']?>&appdate=<?php echo $row['appdate']?>&apptime=<?php echo $row['apptime']?>"
+                        tooltip-placement="top" tooltip="Remove" title="prescribe">
                         <button class="btn btn-success">Prescibe</button></a>
+                        <?php } else {
+
+                            echo "-";
+                            } ?>
                         
                         </td>
 
